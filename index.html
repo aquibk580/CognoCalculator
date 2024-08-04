@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="input.css" />
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body class="bg-[#DAE2F8]">
+    <nav class="flex bg-slate-950 py-4 items-center justify-center">
+      <h1 class="text-white text-5xl font-bold">Calculator</h1>
+    </nav>
+    <main class="flex items-center justify-center py-20 flex-col">
+      <div class="gradient grid grid-rows-1 rounded-md">
+        <div class="grid grid-rows-1 px-2 sm:px-6 py-6">
+          <input
+            type="text"
+            id="calculator-display"
+            class="rounded-md py-4 outline-none px-[1px] sm:px-2 text-2xl bg-[#DAE2F8]"
+          />
+        </div>
+        <div class="text-white grid grid-cols-4 text-2xl md:text-3xl p-2">
+          <div class="grid grid-rows-4 p-1 gap-2">
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="C"
+              onclick="handleClear()"
+            >
+              C
+            </div>
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="7"
+              onclick="handleClick(event)"
+            >
+              7
+            </div>
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="4"
+              onclick="handleClick(event)"
+            >
+              4
+            </div>
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="1"
+              onclick="handleClick(event)"
+            >
+              1
+            </div>
+          </div>
+          <div class="grid grid-rows-4 p-1 gap-2">
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="+/-"
+              onclick="handleToggleSign()"
+            >
+              +/-
+            </div>
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="8"
+              onclick="handleClick(event)"
+            >
+              8
+            </div>
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="5"
+              onclick="handleClick(event)"
+            >
+              5
+            </div>
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="2"
+              onclick="handleClick(event)"
+            >
+              2
+            </div>
+          </div>
+          <div class="grid grid-rows-4 p-1 gap-2">
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="%"
+              onclick="handleClick(event)"
+            >
+              %
+            </div>
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="9"
+              onclick="handleClick(event)"
+            >
+              9
+            </div>
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="6"
+              onclick="handleClick(event)"
+            >
+              6
+            </div>
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="3"
+              onclick="handleClick(event)"
+            >
+              3
+            </div>
+          </div>
+          <div class="grid grid-rows-4 p-1 gap-2">
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="/"
+              onclick="handleClick(event)"
+            >
+              /
+            </div>
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="*"
+              onclick="handleClick(event)"
+            >
+              X
+            </div>
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="-"
+              onclick="handleClick(event)"
+            >
+              -
+            </div>
+            <div
+              class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+              data-value="+"
+              onclick="handleClick(event)"
+            >
+              +
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 col-span-6 p-1">
+            <div
+              class="px-7 md:px-8 py-3 shadow-custom cursor-pointer"
+              data-value="0"
+              onclick="handleClick(event)"
+            >
+              0
+            </div>
+            <div class="grid grid-cols-2 col-span-1 gap-2">
+              <div
+                class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+                data-value="."
+                onclick="handleClick(event)"
+              >
+                .
+              </div>
+              <div
+                class=" sm:px-4 text-center py-3 shadow-custom cursor-pointer"
+                onclick="handleOperation()"
+              >
+                =
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script >
+      const handleClick = (e) => {
+        const value = e.target.dataset.value;
+        console.log(value);
+
+        const display = document.getElementById('calculator-display');
+        display.value += value;
+      };
+    const handleOperation = ()=>{
+      const display = document.getElementById('calculator-display');
+      const updatedContent = eval(display.value)
+      display.value = updatedContent;
+    }
+    const handleClear = ()=>{
+      const display = document.getElementById('calculator-display');
+      display.value = "";
+    }
+    const handleToggleSign = () => {
+        const display = document.getElementById('calculator-display');
+        if (display.value.startsWith("-")) {
+          display.value = display.value.substring(1);
+        } else if (display.value) {
+          display.value = "-" + display.value;
+        }
+      };
+    </script>
+  </body>
+</html>
